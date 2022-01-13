@@ -52,7 +52,7 @@ public class Agenda {
         }
     }
 
-    private void dadosContato(String nome){
+    private void dadosContato(String nome) {
         String telefone = JOptionPane.showInputDialog("Digite o telefone");
         String endereco = JOptionPane.showInputDialog("Digite o endereço");
         String relacao = JOptionPane.showInputDialog("Digite a relação");
@@ -91,7 +91,7 @@ public class Agenda {
         br.close();
         int qtdCtt = cont / 4;
         for (int i = 0; i < qtdCtt; i++) {
-            String contato[] = new String[1000];
+            String contato[] = new String[4];
             for (int j = 0; j < 4; j++) {
                 contato[j] = arquivo[i * 4 + j].substring(arquivo[i * 4 + j].indexOf(":") + 1).trim();
             }
@@ -104,12 +104,12 @@ public class Agenda {
 
         FileWriter arq = new FileWriter("contatos.txt");
         PrintWriter gravarArq = new PrintWriter(arq);
-        for (Contato contato : contatos) {
+        contatos.forEach((contato) -> {
             gravarArq.println("Nome: " + contato.getNome());
             gravarArq.println("Telefone: " + contato.getTelefone());
             gravarArq.println("Endereço: " + contato.getEndereco());
             gravarArq.println("Relação: " + contato.getRelacao());
-        }
+        });
         arq.close();
         JOptionPane.showMessageDialog(null, "Agenda salva com sucesso!");
     }
