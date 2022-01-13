@@ -4,9 +4,9 @@ import java.io.IOException;
 public class Principal {
 
     public static void main(String[] args) throws IOException {
-        Integer resp = 0;
+        int resp;
         do {
-            resp = Integer.parseInt(JOptionPane.showInputDialog("1- Buscar Contato\n2- Inserir Contato\n3- Alterar Contato\n4- Remover Contato\n5- Listar Contatos\n6- Salvar Agenda Telefônica\n7- Recuperar Agenda Telefônica\n8- Encerrar o programa"));
+            resp = Integer.parseInt(JOptionPane.showInputDialog("1- Buscar Contato\n2- Inserir Contato\n3- Alterar Contato\n4- Remover Contato\n5- Listar Contatos\n6- Salvar Agenda Telefônica\n7- Recuperar Agenda Telefônica\n8- Encerrar o Programa"));
             Agenda agenda = new Agenda();
             String resposta;
             switch (resp) {
