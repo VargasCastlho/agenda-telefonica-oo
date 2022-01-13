@@ -60,10 +60,11 @@ public class Agenda {
         if(buscaContato(nome) == null){
             JOptionPane.showMessageDialog(null, "Contato não encontrado na agenda");
         }else{
-            contatos.forEach((contato)->{
-                if(contato.getNome().equals(nome))
-                    contatos.remove(contato);
-            });
+            contatos.remove(contatos.stream().filter((contato)->contato.getNome().contains(nome)).findFirst().orElse(null));
+//            contatos.forEach((contato)->{
+//                if(contato.getNome().equals(nome))
+//                    contatos.remove(contato);
+//            });
             listarContatos();
         }
     }
