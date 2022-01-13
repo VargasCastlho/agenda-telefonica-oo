@@ -37,6 +37,7 @@ public class Agenda {
                     }
                 }
             }
+            contatos.forEach((e)->{});
         }
     }
 
