@@ -2,6 +2,9 @@ import javax.swing.*;
 import java.io.*;
 import java.util.ArrayList;
 
+import static javax.swing.JOptionPane.YES_NO_OPTION;
+import static javax.swing.JOptionPane.YES_OPTION;
+
 public class Agenda {
     static ArrayList<Contato> contatos = new ArrayList();
 
@@ -11,8 +14,8 @@ public class Agenda {
 
     public void alterarContato(String query) {
         if (verificaContato(query) == null) {
-            if (JOptionPane.showConfirmDialog(null, "Contato não existe, deseja criar um novo?") == 1) {
-                inserirContato();
+            if (JOptionPane.showConfirmDialog(null, "Contato não existe, deseja criar um novo?", "Alterar Contato", YES_NO_OPTION) == YES_OPTION) {
+                inserirContato(query);
             }
         } else {
             for (Contato contato : contatos) {
@@ -52,13 +55,21 @@ public class Agenda {
         }
     }
 
+    public void inserirContato(String nome) {
+        String telefone = JOptionPane.showInputDialog("Digite o telefone");
+        String endereco = JOptionPane.showInputDialog("Digite o endereço");
+        String relacao = JOptionPane.showInputDialog("Digite a relação");
+        inserirContatoQuery(new Contato(nome, telefone, endereco, relacao));
+    }
+
     public void removerContato() {
         String nome = JOptionPane.showInputDialog("Digite o nome do contato que deseja excluir");
 
         if (verificaContato(nome) == null) {
             JOptionPane.showMessageDialog(null, "Contato não encontrado na agenda");
-        } else {
+        } else if (JOptionPane.showConfirmDialog(null, "Confirma a exclusão do contato " + nome + "?", "Excluir Contato", YES_NO_OPTION) == YES_OPTION) {
             contatos.remove(verificaContato(nome));
+            JOptionPane.showMessageDialog(null, "Contato " + nome + " excluído com sucesso!");
             listarContatos();
         }
     }
@@ -102,6 +113,7 @@ public class Agenda {
             gravarArq.println("Relação: " + contato.getRelacao());
         }
         arq.close();
+        JOptionPane.showMessageDialog(null, "Agenda salva com sucesso!");
     }
 
     private void inserirContatoQuery(Contato contato) {
@@ -109,7 +121,7 @@ public class Agenda {
         listarContatos();
     }
 
-    private Contato verificaContato(String nome){
+    private Contato verificaContato(String nome) {
         return contatos.stream().filter((contato) -> contato.getNome().equals(nome)).findFirst().orElse(null);
     }
 }
