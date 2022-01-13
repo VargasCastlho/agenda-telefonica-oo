@@ -32,8 +32,8 @@ public class Principal {
                     break;
                 case 7:
                     agenda.abrirArquivo();
-
             }
         } while (resp != 8);
+        JOptionPane.showMessageDialog(null, "Obrigado por usar o aplicativo!\nSe der 200, é GOD!", "Bazilio, Nós Te Amamos!", JOptionPane.INFORMATION_MESSAGE, new ImageIcon("Bazilio Prof.png"));
     }
 }

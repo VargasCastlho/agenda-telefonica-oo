@@ -9,8 +9,7 @@ public class Agenda {
     static ArrayList<Contato> contatos = new ArrayList();
 
     public Contato buscaContato(String query) {
-        Contato result = contatos.stream().filter((contato) -> contato.getNome().contains(query)).findFirst().orElse(null);
-        return result;
+        return contatos.stream().filter((contato) -> contato.getNome().contains(query)).findFirst().orElse(null);
     }
 
     public void alterarContato(String query) {
@@ -81,7 +80,7 @@ public class Agenda {
     public void abrirArquivo() throws IOException {
         String nome = JOptionPane.showInputDialog("Digite o nome do arquivo de agenda");
         BufferedReader br = new BufferedReader(new FileReader(nome));
-        String arquivo[] = new String[1000];
+        String[] arquivo = new String[1000];
         int cont = 0;
         while (br.ready()) {
             arquivo[cont] = br.readLine();
@@ -90,7 +89,7 @@ public class Agenda {
         br.close();
         int qtdCtt = cont / 4;
         for (int i = 0; i < qtdCtt; i++) {
-            String contato[] = new String[4];
+            String[] contato = new String[4];
             for (int j = 0; j < 4; j++) {
                 contato[j] = arquivo[i * 4 + j].substring(arquivo[i * 4 + j].indexOf(":") + 1).trim();
             }
@@ -115,7 +114,6 @@ public class Agenda {
 
     private void inserirContatoQuery(Contato contato) {
         contatos.add(contato);
-        listarContatos();
     }
 
     private Contato verificaContato(String nome) {
