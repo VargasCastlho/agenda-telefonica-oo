@@ -68,7 +68,6 @@ public class Agenda {
         } else if (JOptionPane.showConfirmDialog(null, "Confirma a exclusão do contato " + nome + "?", "Excluir Contato", YES_NO_OPTION) == YES_OPTION) {
             contatos.remove(verificaContato(nome));
             JOptionPane.showMessageDialog(null, "Contato " + nome + " excluído com sucesso!");
-            listarContatos();
         }
     }
 
