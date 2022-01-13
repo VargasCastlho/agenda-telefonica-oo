@@ -15,7 +15,7 @@ public class Agenda {
     public void alterarContato(String query) {
         if (verificaContato(query) == null) {
             if (JOptionPane.showConfirmDialog(null, "Contato não existe, deseja criar um novo?", "Alterar Contato", YES_NO_OPTION) == YES_OPTION) {
-                inserirContato(query);
+                dadosContato(query);
             }
         } else {
             for (Contato contato : contatos) {
@@ -48,19 +48,17 @@ public class Agenda {
             JOptionPane.showMessageDialog(null, "Contato já existe, neste momento sofrerá alteração");
             alterarContato(nome);
         } else {
-            String telefone = JOptionPane.showInputDialog("Digite o telefone");
-            String endereco = JOptionPane.showInputDialog("Digite o endereço");
-            String relacao = JOptionPane.showInputDialog("Digite a relação");
-            inserirContatoQuery(new Contato(nome, telefone, endereco, relacao));
+            dadosContato(nome);
         }
     }
 
-    public void inserirContato(String nome) {
+    private void dadosContato(String nome){
         String telefone = JOptionPane.showInputDialog("Digite o telefone");
         String endereco = JOptionPane.showInputDialog("Digite o endereço");
         String relacao = JOptionPane.showInputDialog("Digite a relação");
         inserirContatoQuery(new Contato(nome, telefone, endereco, relacao));
     }
+
 
     public void removerContato() {
         String nome = JOptionPane.showInputDialog("Digite o nome do contato que deseja excluir");
