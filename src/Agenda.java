@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Agenda {
-    static ArrayList<Contato> contatos = new ArrayList();
+     static ArrayList<Contato> contatos = new ArrayList();
 
     public Contato buscaContato(String query){
         return contatos.stream().filter((contato)->contato.getNome().contains(query)).findFirst().orElse(null);
@@ -66,9 +66,7 @@ public class Agenda {
     }
 
     public void listarContatos(){
-        contatos.forEach((contato)->{
-            System.out.println(contato);
-        });
+            contatos.forEach((contato)->{System.out.println(contato);});
     }
 
     public void abrirArquivo() throws IOException {
