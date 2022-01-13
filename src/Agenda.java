@@ -9,7 +9,8 @@ public class Agenda {
     static ArrayList<Contato> contatos = new ArrayList();
 
     public Contato buscaContato(String query) {
-        return contatos.stream().filter((contato) -> contato.getNome().contains(query)).findFirst().orElse(null);
+        Contato result =  contatos.stream().filter((contato) -> contato.getNome().contains(query)).findFirst().orElse(null);
+        return result;
     }
 
     public void alterarContato(String query) {
@@ -72,9 +73,9 @@ public class Agenda {
     }
 
     public void listarContatos() {
-        contatos.forEach((contato) -> {
+        System.out.println();
+        for(Contato contato : contatos)
             System.out.println(contato);
-        });
         System.out.println();
     }
 
