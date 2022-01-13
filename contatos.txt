@@ -1,0 +1,12 @@
+Nome: Fulano
+Telefone: 99999999
+Endereço: Rua A
+Relação: UFF
+Nome: Ciclano
+Telefone: 88888888
+Endereço: Rua B
+Relação: Cederj
+Nome: Beltrano
+Telefone: 88889999
+Endereço: Rua C
+Relação: Infância
