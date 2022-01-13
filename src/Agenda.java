@@ -80,7 +80,7 @@ public class Agenda {
     }
 
     public void abrirArquivo() throws IOException {
-        String nome = "contatos.txt";
+        String nome = JOptionPane.showInputDialog("Digite o nome do arquivo de agenda");
         BufferedReader br = new BufferedReader(new FileReader(nome));
         String arquivo[] = new String[1000];
         int cont = 0;
